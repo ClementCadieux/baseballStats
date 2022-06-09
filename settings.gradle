@@ -1,0 +1,4 @@
+include 'player-service'
+include 'team-service'
+include 'league-service'
+include 'api-gateway'

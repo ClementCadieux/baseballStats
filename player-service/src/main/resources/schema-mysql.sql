@@ -1,0 +1,48 @@
+USE `baseballStats-db`;
+
+CREATE TABLE if NOT EXISTS players(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    playerId INTEGER NOT NULL UNIQUE,
+    teamId INTEGER NOT NULL,
+    firstName VARCHAR(20),
+    lastName VARCHAR (20),
+    position VARCHAR (2),
+    age INTEGER
+);
+
+CREATE TABLE if NOT EXISTS battingstats(
+     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+     battingStatsId INTEGER NOT NULL UNIQUE,
+     ab INTEGER DEFAULT 0,
+     pa INTEGER DEFAULT 0,
+     bb INTEGER DEFAULT 0,
+     singles INTEGER DEFAULT 0,
+     doubles INTEGER DEFAULT 0,
+     triples INTEGER DEFAULT 0,
+     hr INTEGER DEFAULT 0,
+     hbp INTEGER DEFAULT 0
+);
+
+CREATE TABLE if NOT EXISTS pitchingstats(
+      id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      pitchingStatsId INTEGER NOT NULL UNIQUE,
+      ip INTEGER DEFAULT 0,
+      gs INTEGER DEFAULT 0,
+      sv INTEGER DEFAULT 0,
+      h INTEGER DEFAULT 0,
+      er INTEGER DEFAULT 0,
+      k INTEGER DEFAULT 0,
+      bb INTEGER DEFAULT 0,
+      w INTEGER DEFAULT 0,
+      l INTEGER DEFAULT 0
+);
+
+CREATE TABLE if NOT EXISTS seasons(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    seasonId INTEGER NOT NULL UNIQUE,
+    playerId INTEGER NOT NULL,
+    battingStatsId INTEGER,
+    pitchingStatsId INTEGER,
+    year INTEGER,
+    gp INTEGER DEFAULT 0
+);

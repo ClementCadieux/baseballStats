@@ -1,0 +1,38 @@
+server:
+  error:
+    include-message: always
+
+logging:
+  level:
+    root: INFO
+    com.baseballstats: DEBUG
+
+app:
+  players:
+    host: localhost
+    port: 7001
+  teams:
+    host: localhost
+    port: 7002
+  leagues:
+    host: localhost
+    port: 7003
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+server.port: 8080
+
+app:
+  players:
+    host: players
+    port: 8080
+  teams:
+    host: teams
+    port: 8080
+  leagues:
+    host: leagues
+    port: 8080

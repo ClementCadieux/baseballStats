@@ -1,0 +1,9 @@
+USE `team-db`;
+
+CREATE TABLE if NOT EXISTS teams(
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    teamId INTEGER NOT NULL UNIQUE,
+    leagueId INTEGER NOT NULL,
+    name VARCHAR(30),
+    city VARCHAR(30)
+) engine = InnoDb;
