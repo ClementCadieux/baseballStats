@@ -83,24 +83,7 @@ public class TeamAggregateServiceImpl implements TeamAggregateService{
 
         TeamDetailsResponseModel teamDetailsResponseModel = teamServiceClient.updateTeam(teamRequestModel, teamId);
 
-        playerServiceClient.deletePlayers(teamId);
-
-        List<PlayerSummaryModel> playerSummaryModels = teamAggregateRequestModel.getPlayers();
-
-        List<PlayerResponseModel> playerResponseModels = new ArrayList<>();
-
-        for (PlayerSummaryModel playerSummaryModel:
-                playerSummaryModels) {
-            PlayerRequestModel playerRequestModel = new PlayerRequestModel();
-
-            playerRequestModel.setAge(playerSummaryModel.getAge());
-            playerRequestModel.setFirstName(playerSummaryModel.getFirstName());
-            playerRequestModel.setLastName(playerSummaryModel.getLastName());
-            playerRequestModel.setPosition(playerSummaryModel.getPosition());
-            playerRequestModel.setTeamId(teamDetailsResponseModel.getTeamId());
-
-            playerResponseModels.add(playerServiceClient.createPlayer(playerRequestModel));
-        }
+        List<PlayerResponseModel> playerResponseModels = playerServiceClient.getPlayersDetails(teamId);
 
         List<PlayerSummaryModel> playerSummaryModelsRes = playerSummaryMapper.responseModelListToSummaryModelList(playerResponseModels);
 

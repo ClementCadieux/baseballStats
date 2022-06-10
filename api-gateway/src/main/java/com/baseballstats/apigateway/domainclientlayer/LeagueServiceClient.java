@@ -57,7 +57,7 @@ public class LeagueServiceClient {
         try {
             String requestUrl = url + "/leagues/" + leagueId;
             restTemplate.put(requestUrl, leagueRequestModel);
-            leagueResponseModel = restTemplate.getForObject(url, LeagueResponseModel.class);
+            leagueResponseModel = restTemplate.getForObject(requestUrl, LeagueResponseModel.class);
         } catch (HttpClientErrorException e){
             throw handleHttpClientException(new HttpClientErrorException(e.getStatusCode()));
         }

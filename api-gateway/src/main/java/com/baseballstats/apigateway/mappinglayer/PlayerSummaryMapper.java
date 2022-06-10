@@ -9,4 +9,6 @@ public interface PlayerSummaryMapper {
     PlayerSummaryModel responseModelToSummaryModel(PlayerResponseModel responseModel);
 
     List<PlayerSummaryModel> responseModelListToSummaryModelList(List<PlayerResponseModel> responseModels);
+
+
 }
